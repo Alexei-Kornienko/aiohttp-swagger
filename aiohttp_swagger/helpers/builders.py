@@ -80,11 +80,11 @@ def generate_doc_from_each_end_point(
 
     def nesteddict2yaml(d, indent=10, result=""):
         for key, value in d.items():
-            result += " " * indent + str(key) + ':'
+            result += "%s'%s':" % (" " * indent, str(key))
             if isinstance(value, dict):
                 result = nesteddict2yaml(value, indent + 2, result + "\n")
             else:
-                result += " " + str(value) + "\n"
+                result += " '%s'\n" % value
         return result
 
     # Load base Swagger template
